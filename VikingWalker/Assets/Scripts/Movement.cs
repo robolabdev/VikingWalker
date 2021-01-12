@@ -9,7 +9,7 @@ public class Move ment : MonoBehaviour
     // Start is called before the first frame update
     void start 
     {
-        playerController = GetComponent<CharacterController>();
+         
     }
 
     // Update is called once per frame
