@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Move ment : MonoBehaviour
 {
     
@@ -10,6 +11,7 @@ public class Move ment : MonoBehaviour
     void start 
     {
          
+
     }
 
     // Update is called once per frame
@@ -17,7 +19,9 @@ public class Move ment : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical") / 3;
         float h = Input.GetAxis("Horizontal") / 3;
+
         transform.position = transform.position + new Vector3(h, 0, v); 
+
 
     }
 }
