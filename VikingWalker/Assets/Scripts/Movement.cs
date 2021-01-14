@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+ 
 public class Movement : MonoBehaviour
 {
 
@@ -10,24 +11,27 @@ public class Movement : MonoBehaviour
     void start() 
     {
         playerController = GetComponent<CharacterController>();
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        float v = Input.GetAxis("Vertical") / 3;
-        float h = Input.GetAxis("Horizontal") / 3;
-        Vector3 direction = transform.forward * v + transform.right * h; 
-        transform.position = transform.position + new Vector3(h, 0, v);
-        Debug.Log("CurrentSpeed = " + playerController.velocity.magnitude);
+ 
+ 
 
-=======
+ 
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         Vector3 direction = transform.forward * v + transform.right * h;
         playerController.SimpleMove(direction*4);
         Debug.Log("Current speed =" + playerController.velocity.magnitude);
->>>>>>> Stashed changes
+ 
+ 
+        float v = Input.GetAxis("Vertical") / 3;
+        float h = Input.GetAxis("Horizontal") / 3;
+
+        transform.position = transform.position + new Vector3(h, 0, v); 
+ 
     }
 }
