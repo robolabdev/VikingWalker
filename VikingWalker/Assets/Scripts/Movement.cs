@@ -18,6 +18,6 @@ public class Movement : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         Vector3 direction = transform.forward * v + transform.right * h; 
-        cc.SimpleMove(direction);
+        cc.SimpleMove(direction * 10);
     }
 }
