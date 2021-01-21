@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Move ment : MonoBehaviour
 {
+    
 
-    [SerializeField] CharacterController cc;
     // Start is called before the first frame update
-    void Start ()
+    void start 
     {
-        cc = GetComponent<CharacterController>();
+         
     }
 
     // Update is called once per frame
     void Update()
     {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-        Vector3 direction = transform.forward * v + transform.right * h; 
-        cc.SimpleMove(direction);
+        float v = Input.GetAxis("Vertical") / 3;
+        float h = Input.GetAxis("Horizontal") / 3;
+        transform.position = transform.position + new Vector3(h, 0, v); 
+
     }
 }
