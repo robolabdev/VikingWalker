@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour
 {
 
     [SerializeField] CharacterController cc;
-    [SerializeField] float speed = 8;
     // Start is called before the first frame update
     void Start ()
     {
@@ -18,8 +17,7 @@ public class Movement : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        transform.Rotate(0, h, 0);
-        Vector3 direction = transform.forward * v  ; 
-        cc.SimpleMove(direction*speed);
+        Vector3 direction = transform.forward * v + transform.right * h; 
+        cc.SimpleMove(direction);
     }
 }
