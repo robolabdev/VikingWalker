@@ -13,9 +13,7 @@ public class AnimatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentSpeed = GetComponentInParent<CharacterController>().velocity ;
-        GetComponent<Animator>().SetFloat("Speed", currentSpeed);
-        float random = Mathf.Sin(Time.time);
-        GetComponent<Animator>().SetFloat("", random); 
+        float speed = GetComponent<CharacterController>().velocity.magnitude;
+        GetComponentInChildren<Animator>().SetFloat("Speed", speed);
     }
 }
