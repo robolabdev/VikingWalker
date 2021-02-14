@@ -73,7 +73,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 *.dwlt
 *.txt 
-*.meta
+/*.meta
 *.md
 *.prefs
 *.graph
