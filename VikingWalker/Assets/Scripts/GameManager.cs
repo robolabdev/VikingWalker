@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        goldValue = targetResourceValue * coast;
+        goldValue += targetResourceValue * coast;
         targetResourceValue = 0 ;
         PlayerPrefs.SetInt(resource,targetResourceValue);
         PlayerPrefs.SetInt("gold",goldValue);
