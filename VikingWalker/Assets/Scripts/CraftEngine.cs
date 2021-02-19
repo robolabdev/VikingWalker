@@ -20,17 +20,11 @@ public class CraftEngine : MonoBehaviour
         }  
     } 
     public void CraftrHome()
-    { 
-         
+    {  
             GameObject item = Resources.Load<GameObject>(currentCraftItem);
             itemToSpawn = Instantiate(item);
             Vector3 playerPosition = GameObject.Find("Player").transform.position;
             itemToSpawn.transform.position = playerPosition;  
-        
     }
-     
-    private void Update()
-    {
-        
-    }
+      
 }
