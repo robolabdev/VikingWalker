@@ -3,55 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftEngine : MonoBehaviour
-{
- 
-
-    [SerializeField] string  currentCraftItem;
-    [SerializeField] bool isItemSelected =false; 
-    [SerializeField] GameObject spawnedItem;
-    [SerializeField,Range(10,1000)] int homePrice =100;
-
+{ 
+    [SerializeField] string  currentCraftItem; 
+    [SerializeField] GameObject itemToSpawn;
+    [SerializeField,Range(10,1000)] int itemPrice =100; 
     public void SetCurrentCraftItem(string  settingitem)
     {
         int goldValue = PlayerPrefs.GetInt("gold");
-        if(goldValue > homePrice)
-        {
-            isItemSelected = true;
+        if(goldValue > itemPrice)
+        { 
             currentCraftItem = settingitem;
             PlayerPrefs.SetString("CurrentCraftItem", currentCraftItem);
-            goldValue = goldValue - homePrice;
+            goldValue = goldValue - itemPrice;
             PlayerPrefs.SetInt("gold", goldValue);
-        }
-       
-    }
-
-
+            CraftrHome();
+        }  
+    } 
     public void CraftrHome()
-    {
-
-        
-
-        if(isItemSelected )
-        {
-            GameObject item = Resources.Load<GameObject>(currentCraftItem);
-            spawnedItem = Instantiate(item);
-            Vector3 playerPosition = GameObject.Find("Player").transform.position;
-            spawnedItem.transform.position = playerPosition; 
-            isItemSelected = false;
-
-           
-
-
-        }
-
-        
+    { 
          
+            GameObject item = Resources.Load<GameObject>(currentCraftItem);
+            itemToSpawn = Instantiate(item);
+            Vector3 playerPosition = GameObject.Find("Player").transform.position;
+            itemToSpawn.transform.position = playerPosition;  
         
     }
-
-
+     
     private void Update()
     {
-        CraftrHome();
+        
     }
 }
