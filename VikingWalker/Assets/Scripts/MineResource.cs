@@ -8,7 +8,9 @@ enum Resource
     gold,
     diamonds
 }
-public class CraftResource : MonoBehaviour
+
+  
+public class MineResource : MonoBehaviour
 {
     
     [SerializeField] Resource currentZoneResource;
