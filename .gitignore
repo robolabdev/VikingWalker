@@ -81,4 +81,5 @@ crashlytics-build.properties
 *.psd
 *.cginc
 
-
+*.meta
+VikingWalker/ProjectSettings/ProjectVersion.txt
