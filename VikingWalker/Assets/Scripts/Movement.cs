@@ -16,8 +16,11 @@ public class Movement : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical") / 3;
         float h = Input.GetAxis("Horizontal") / 3;
+        float j = Input.GetAxis("Jump") / 3;
         Vector3 direction = transform.forward * v + transform.right * h;
-        playerController.SimpleMove(direction * 5);
-        Debug.Log("Current speed = " + playerController.velocity.magnitude);
+        Vector3 jump = transform.up * j; 
+        playerController.Move(direction * 1 + jump);
+        Debug.Log("Current speed = " + playerController.velocity.magnitude);   
+
     }
 }
