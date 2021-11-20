@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public float Speed = 50;
     [SerializeField] CharacterController playerController;
     // Start is called before the first frame update
-    void Start() 
+    void Start()
     {
         playerController = GetComponent<CharacterController>();
     }
@@ -16,11 +17,8 @@ public class Movement : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical") / 3;
         float h = Input.GetAxis("Horizontal") / 3;
-        float j = Input.GetAxis("Jump") / 3;
         Vector3 direction = transform.forward * v + transform.right * h;
-        Vector3 jump = transform.up * j; 
-        playerController.Move(direction * 1 + jump);
-        Debug.Log("Current speed = " + playerController.velocity.magnitude);   
-
+        playerController.SimpleMove(direction*Speed);
+        Debug.Log("Current Speed = " + playerController.velocity.magnitude);
     }
 }
