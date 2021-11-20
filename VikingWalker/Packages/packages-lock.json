@@ -43,6 +43,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     "com.unity.textmeshpro": {
@@ -55,6 +56,8 @@
       "url": "https://packages.unity.com"
     },
 >>>>>>> 46e286e5407b4f17a809495f4e4fb2f52300df56
+=======
+>>>>>>> Stashed changes
     "com.unity.timeline": {
       "version": "1.4.8",
       "depth": 0,
@@ -209,18 +212,6 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.uielementsnative": "1.0.0"
-      }
-    },
-    "com.unity.modules.uielementsnative": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       }
