@@ -80,3 +80,5 @@ crashlytics-build.properties
 *.uss 
 *.psd
 *.cginc
+VikingWalker/Packages/manifest.json
+VikingWalker/Packages/packages-lock.json
