@@ -1,20 +1,26 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move ment : MonoBehaviour
+public class Movement : MonoBehaviour
 {
+    public float Speed = 50;
+    [SerializeField] CharacterController playerController;
     // Start is called before the first frame update
-    void Start 
+    void Start()
     {
-        
+        playerController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float j = Input.GetAxis("Jump");
         float v = Input.GetAxis("Vertical") / 3;
         float h = Input.GetAxis("Horizontal") / 3;
-        transform.position = transform.position + new Vector3(h, 0, v);
+        Vector3 direction = transform.forward * v + transform.right * h;
+        playerController.SimpleMove(direction*Speed);
+        Debug.Log("Current Speed = " + playerController.velocity.magnitude);
+        
     }
 }
