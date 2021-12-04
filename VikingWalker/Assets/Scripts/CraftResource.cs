@@ -1,41 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+enum Resource
+{
+    wood,
+    stone,
+    gold,
+    diamonds
+}
 public class CraftResource : MonoBehaviour
 {
-    enum Resource
-    {
-        wood,
-        steel,
-        gold,
-        diamonds
-    };
+    
     [SerializeField] Resource currentZoneResource;
-
-    public GameObject resourceObject;
-
     [SerializeField, Range(1, 100)] float resourceValue = 100;
-
+    [SerializeField] GameObject resourceMesh;
     public void MinusValue()
     {
-        resourceValue = resourceValue - 1;
-        if (resourceValue < 0)
-            Destroy(resourceObject);
+        resourceValue--;
+        if(resourceValue<0)
+        {
+            Destroy(resourceMesh);
+        }
     }
-
-    public void AddPlayerScore()
+    public void  AddPlayerScore()
     {
-        int playerResource = PlayerPrefs.GetInt(currentZoneResource.ToString());
-        playerResource = playerResource + 1;
-        PlayerPrefs.SetInt(currentZoneResource.ToString(), playerResource);
+        int resource = PlayerPrefs.GetInt(currentZoneResource.ToString());
+        resource++;
+        PlayerPrefs.SetInt(currentZoneResource.ToString(), resource);
     }
-
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.GetComponent<Movement>())
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 MinusValue();
                 AddPlayerScore();

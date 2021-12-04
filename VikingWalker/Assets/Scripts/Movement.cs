@@ -5,22 +5,22 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] CharacterController _characterControllerInstance;
-    [SerializeField,Range(1,10)] float _speedOfCharacter;
+    [SerializeField] CharacterController cc;
+    [SerializeField,Range(1,20)]private float  speed = 7 ;
+
     // Start is called before the first frame update
     void Start ()
     {
-        _speedOfCharacter = 5;
-        _characterControllerInstance = GetComponent<CharacterController>();
+        cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float v = Input.GetAxis("Vertical") * _speedOfCharacter;
+        float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         Vector3 direction = transform.forward * v;
-        transform.Rotate(0, h, 0);
-        _characterControllerInstance.SimpleMove(direction);
+        cc.SimpleMove(direction * speed);
+        transform.Rotate(0, h * speed, 0);
     }
 }
