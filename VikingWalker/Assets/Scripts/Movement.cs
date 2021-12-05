@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] CharacterController playerController;
+
+    [SerializeField] CharacterController cc;
     // Start is called before the first frame update
-    void Start()
+    void Start ()
     {
-        playerController = GetComponent<CharacterController>();
+        cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float v = Input.GetAxis("Vertical")*2.5f;
-        float h = Input.GetAxis("Horizontal")*2.5f;
-        Vector3 dir = transform.forward * v + transform.right * h;
-        playerController.SimpleMove(dir);
-        Debug.Log("Current speed = " + playerController.velocity.magnitude);
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        Vector3 direction = transform.forward * v + transform.right * h; 
+        cc.SimpleMove(direction);
     }
 }
