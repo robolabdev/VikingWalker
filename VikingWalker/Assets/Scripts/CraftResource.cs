@@ -20,6 +20,7 @@ public class CraftResource : MonoBehaviour
         if(resourceValue<0)
         {
             Destroy(resourceMesh);
+            Destroy(gameObject);
         }
     }
     public void  AddPlayerScore()
