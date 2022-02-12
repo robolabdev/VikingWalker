@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject panel;
+    [Range(1,100)] public int stonePrice = 15, woodPrice = 5;
     // Start is called before the first frame update
-    public GameObject shopPanel;
     void Start()
     {
         
@@ -14,38 +15,40 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKey(KeyCode.Tab))
         {
-            shopPanel.SetActive(true);
+            panel.SetActive(true);
         }
-       if(Input.GetKeyUp(KeyCode.Tab))
+        else
         {
-            shopPanel.SetActive(false);
+            panel.SetActive(false);
         }
-
     }
-    public void SelfResource(string resourceToSell)
-    {
 
+    public void SellResources(string resource)  
+    {
         int goldValue = PlayerPrefs.GetInt("gold");
-        int resourceToSellValue = PlayerPrefs.GetInt(resourceToSell);
-        switch(resourceToSell)
+        int targetResourceValue = PlayerPrefs.GetInt(resource);
+
+        int coast = 1;
+        switch(resource)
         {
             case "wood":
-                goldValue += resourceToSellValue * woodprice;
-                break;
+            coast = woodPrice;
+            break;
             case "stone":
-                goldValue += resourceToSellValue * stoneprice;
-                break;
-            default:
-                goldValue += resourceToSellValue;
-                break;
+            coast = stonePrice;
+            break;
+            default: 
+            coast = 1;
+            break;
         }
-        resourceToSellValue = 0;
-        PlayerPrefs.SetInt("gold", goldValue);
-        PlayerPrefs.SetInt(resourceToSell, 0);
+
+
+        goldValue += targetResourceValue * coast;
+        targetResourceValue = 0 ;
+        PlayerPrefs.SetInt(resource,targetResourceValue);
+        PlayerPrefs.SetInt("gold",goldValue);
+
     }
-    public int stoneprice = 5;
-    public int woodprice = 2;
-    
 }
