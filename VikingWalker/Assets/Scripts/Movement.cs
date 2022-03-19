@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move ment : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-
+    [SerializeField] CharacterController playerController;
     
     // Start is called before the first frame update
-    void start  
+    void start()  
     {
-        
+        playerController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -17,6 +17,8 @@ public class Move ment : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        transform.position = transform.position + new Vector3(v, 0, h);
+        Vector3 direction = transform.forward * v +transform.right * h;
+        playerController.SimpleMove(direction);
+        Debug.Log("Current speed = " + playerController.velocity.magnitude); 
     }
 }
