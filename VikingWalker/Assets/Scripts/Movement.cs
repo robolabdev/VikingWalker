@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] CharacterController playerController;
+    [SerializeField] float speed;
     
     // Start is called before the first frame update
     void start()  
@@ -17,7 +18,7 @@ public class Movement : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        Vector3 direction = transform.forward * v +transform.right * h;
+        Vector3 direction = transform.forward * v *speed + transform.right * h * speed;
         playerController.SimpleMove(direction);
         Debug.Log("Current speed = " + playerController.velocity.magnitude); 
     }
