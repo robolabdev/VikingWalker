@@ -5,11 +5,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] CharacterController playerController;
+    [SerializeField] CharacterController cc;
+    [SerializeField,Range(1,20)]private float  speed = 7 ;
+
     // Start is called before the first frame update
-    void Start()
+    void Start ()
     {
-        playerController = GetComponent<CharacterController>();
+        cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -17,8 +19,8 @@ public class Movement : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        Vector3 direction = transform.forward * v + transform.right * h;
-        playerController.SimpleMove(direction);
-        Debug.Log("Current speed = " + playerController.velocity.magnitude);
+        Vector3 direction = transform.forward * v;
+        cc.SimpleMove(direction * speed);
+        transform.Rotate(0, h * speed, 0);
     }
 }
