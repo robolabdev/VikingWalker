@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeFiled] CharacterController playerController;
+    [SerializeField] CharacterController playerController;
     void Start()
     {
         playerController = GetComponent<CharacterController>();
@@ -16,11 +16,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float v = Input.GetAxis("Vertical")/5;
-        float h = Input.GetAxis("Horizontal")/5;
-        transform.position = transform.position + new Vector3(v, 0, h);
+        float d = 0;
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Jump");
+        Vector3 direction = transform.forward * v + transform.right * h;
+        
+        transform.position = transform.position + new Vector3(v, d, h);
         playerController.SimpleMove(direction);
-        Debug.Log("Current speed = " + playerController.velocity.magnitude)
+        Debug.Log("Current speed = " + playerController.velocity.magnitude);
 
     }
 }
